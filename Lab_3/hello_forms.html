@@ -6,6 +6,7 @@
 </head>
 <body>
 
+    <!-- Missle alert links -->
     <h1>Missile Alerts</h1>
         
         <a id="real-alert" class="missile-link" href="#">Send Missile Alert</a>
@@ -14,37 +15,59 @@
 
     <h1>Forms</h1>
 
-        <p>
-            Enter your name: <input type="text" name="name">
+        <!-- Inputs practice -->
+        <!-- Each input needs to be given a type -->
+        <!-- Label and input id MUST have same name -->
+        <!-- Name attribute is used to identify the input when the form is submitted -->
+        <!-- Value attribute is used to set the default value of the input -->
+        <!-- Placeholder attribute is used to give the user a message of what to enter like: 'type your responce here' -->
+        <!-- Required attribute is used to make the input required -->
+        <!-- Checked attribute is used to check the input -->
 
-            <br> Enter your email: <input type="text" name="email">
+            <div><label for="username">Enter your name:</label> <input id="username" type="text" name="username"></div>
+            
+            <div><label for="user-email">Enter your email:</label> <input id="user-email" type="text" name="user-email"></div>
 
-            <br> Whats your lucky number? <input type="number" name="lucky_number">
+            <div><label for="lucky-number">Whats your lucky number?</label> <input id="lucky-number" type="number" name="lucky-number" value="99"></div>
 
-            <br> Whats your birthdate? <input type="date" name="birthdate">
+            <div><label for="user-birthdate">Whats your birthdate?</label> <input id="user-birthdate" type="date" name="user-birthdate"></div>
 
-            <br> What time is it? <input type="time" name="time">
+            <div><label for="selected-time">What time is it?</label> <input id="selected-time" type="time" name="selected-time"></div>
 
-            <br> Select a number from this range: <input type="range" name="range">
+            <div><label for="selected-number">Select a number from this range:</label> <input id="selected-number" type="range" name="selected-number"></div>
 
-            <br> Choose your favorite color: <input type="color" name="color">
+            <div><label for="favorite-color">Choose your favorite color:</label> <input id="favorite-color" type="color" name="favorite-color"></div>
 
-            <br> What's the secret password? <input type="password" name="password">
+            <div><label for="password">What's the secret password?</label> <input id="password" type="password" name="password"></div>
 
-            <br> Search: <input type="Search" name="search">
+            <!-- Search -->
+            <div><label for="user-search">Search:</label> <input id="user-search" type="Search" name="search"></div>
 
-            <br> Are you sure? <input type="checkbox" name="checkbox">
+            <!-- Checkbox -->
+            <div><label for="checkbox">Are you sure?</label> <input type="checkbox" name="checkbox"></div>
+             
+            <!-- Option select -->
+            <div><label>Whats your favorite season?</label>
+            <select name="season-choice">
+                <option> Spring </option>
+                <option> Summer </option>
+                <option> Fall </option>
+                <option> Winter </option>
+            <select></div>
 
-            <br> Whats your favorite season? 
-            <select name="select">
-                <option>Spring</option>
-                <option>Summer</option>
-                <option>Fall</option>
-                <option>Winter</option>
-            <select>
+            <!-- Radio buttons -->
+            <div><label>Select an option: Today or later?</label>
+                <!-- Now button -->
+                <input id="delivery-now" name="delivery-time" type="radio" checked> 
+                <label for="delivery-now">Now</label>
+                <!-- Later button -->
+                <input id="delivery-later" name="delivery-time" type="radio">
+                <label for="delivery-later">Later</label></div><br>
+            
+            <!-- Text area -->
+            <div><textarea name="comments" label="text area" rows="4" cols="50">Enter your comments here...</textarea></div>
 
-            <br> Select an option <input name="choice" type="radio">Yes <input name="choice" type="radio">No
-        </p>
+        
         
 
 
