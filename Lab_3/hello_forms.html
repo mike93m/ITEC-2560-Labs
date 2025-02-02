@@ -23,8 +23,10 @@
         <!-- Placeholder attribute is used to give the user a message of what to enter like: 'type your responce here' -->
         <!-- Required attribute is used to make the input required -->
         <!-- Checked attribute is used to check the input -->
-
-            <div><label for="username">Enter your name:</label> <input id="username" type="text" name="username"></div>
+        <!-- In order to allow only one radio button to be selected ensure both inputs have the same name -->
+        
+        <form>
+            <div><label for="username">Enter your name (required):</label> <input id="username" type="text" name="username" required></div>
             
             <div><label for="user-email">Enter your email:</label> <input id="user-email" type="text" name="user-email"></div>
 
@@ -40,11 +42,10 @@
 
             <div><label for="password">What's the secret password?</label> <input id="password" type="password" name="password"></div>
 
+            <div><label for="checkbox">Are you sure?</label> <input type="checkbox" name="checkbox"></div>
+
             <!-- Search -->
             <div><label for="user-search">Search:</label> <input id="user-search" type="Search" name="search"></div>
-
-            <!-- Checkbox -->
-            <div><label for="checkbox">Are you sure?</label> <input type="checkbox" name="checkbox"></div>
              
             <!-- Option select -->
             <div><label>Whats your favorite season?</label>
@@ -65,11 +66,10 @@
                 <label for="delivery-later">Later</label></div><br>
             
             <!-- Text area -->
-            <div><textarea name="comments" label="text area" rows="4" cols="50">Enter your comments here...</textarea></div>
+            <div><textarea name="comments" rows="4" cols="50">Enter your comments here...</textarea></div>
 
-        
-        
-
+            <input type="submit">
+        </form>
 
 </body>
 <html>

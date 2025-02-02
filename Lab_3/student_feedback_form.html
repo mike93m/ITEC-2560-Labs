@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Feedback Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Student Feedback Report</h1>
+    <h2>MCTC strives to continually improve itself and your feedback helps make this possible!</h2>
+    <form>
+        <div><label for="student-name">Name</label> <input id="student-name" type="text" name="student-name"></div>
+
+        <div><label for="student-email">email</label> <input id="student-email" type="text" name="student-email"></div>
+
+        <div><label for="student-feedback">Please put your comments, questions or concerns here</label></div> 
+           <textarea id="student-feedback" name="student-feedback" required></textarea></div>
+
+        <div><label>Are you a current student?</label></div>
+        <div><input id for="current-student" name="student-status" type="radio" checked>
+            <label for="current-student">Yes</label>
+            <input id for="not-a-student" name="student-status" type="radio">
+            <label for="not-a-student">No</label></div>
+
+        <input type="submit">
+    </form>
+</body>
+</html>
