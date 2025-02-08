@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Quiz</h1>
+
+    <p> What is the capitol of Wisconsin?</p>
+
+    <!-- Answer buttons -->
+    <button class="wrong_answer">Bayfield</button>
+    <button id="correct_answer">Madison</button>
+    <button class="wrong_answer">Green Bay</button>
+
+    <p id="result"z></p>
+
+    <script>
+        // Assign variables to the buttons and result
+        let correct_answer_button = document.querySelector('#correct_answer')
+
+        let wrong_answer_button = document.querySelectorAll('.wrong_answer')
+
+        let result = document.querySelector('#result')
+
+        // Get the default color of the button
+        let default_button_color = correct_answer_button.style.backgroundColor
+
+        // Event listener for correct answer
+        correct_answer_button.addEventListener('click', function(){
+            result.innerHTML = 'Correct!'
+            correct_answer_button.style.backgroundColor = 'green'
+            correct_answer_button.style.color = default_button_color
+        })
+        // Event listener for wrong answers
+        // forEach allows you to loop through an array
+        // wrong_answer_button.forEach(function(wrong_answer_button){  
+        //     wrong_answer_button.addEventListener('click', function(){
+        //         result.innerHTML = 'Incorrect, try again'
+        //         correct_answer_button.style.backgroundColor = default_button_color
+        //     })
+        // })
+
+        // Imperitive way of looping through an array
+        for (let x=0; x<wrong_answer_button.length; x++){
+            wrong_answer_button[x].addEventListener('click', function(){
+                result.innerHTML = 'Incorrect, try again'
+                correct_answer_button.style.backgroundColor = default_button_color
+            })
+        }
+
+        
+    </script>
+</body>
+</html>

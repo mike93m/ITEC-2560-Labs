@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Click</title>
+</head>
+<body>
+
+    <button id="alert_button">Click here!</button>
+
+
+<script>
+
+    let correct_answer_button = document.querySelector('#correct_answer');
+
+    let button = document.querySelector('#alert_button');
+
+    let result = document.querySelector('#result');
+
+    correct_answer_button.addEventListener('click', function(){
+        result.innerHTML = 'Correct!';
+    });
+
+    function show_alert(){
+        alert('You clicked the button!')
+        button.innerHTML = 'You clicked me!';   
+    }
+
+    button.addEventListener('click', show_alert);
+
+</script>
+    
+</body>
+</html>

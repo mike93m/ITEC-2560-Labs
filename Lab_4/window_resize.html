@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My first web page!</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+        <h1>This is my <i>first</i> web page!</h1>
+
+        <h2 id="width"></h2>
+
+        <p>It's not much, but it's a start.<br>
+        Lets see if autosave is working.</p>
+
+        <p><b>I want this text to be BOLD!</b></p>
+
+        <!--This line has bold and underlined text -->
+        <p>This page was created by:<b><u>Mike!</u></b></p>
+        
+        <h2>Things we will learn in this class</h2>
+
+        <h3>Web Developer's Websites</h3>
+
+        <!-- Adding an image -->
+        <img src="Coding_image.jpeg" alt="A laptop with code on the screen" width="150" height="200" title="Coding Image">
+
+        <!-- Website list -->
+        <ul>
+            <li>JSFiddle</li>
+            <li>W3 Schools</li>
+            <li>Stack Overflow</li>
+        </ul>
+
+        <h3>To Do List</h3>
+
+        <!-- To do list -->
+        <ol>
+            <li>Wash car</li>
+            <li>Do laundry</li>
+            <li>Buy groceries</li>
+        </ol>
+
+        <p>
+            Want to buy groceries online instead? Click the link below <br>
+            <!-- Inserting a hypertext link -->
+            <a href="https://www.walmart.com/">Buy groceries online at Walmart.com</a>
+        </p>
+
+        <h3>Tables</h3>
+
+        <!-- Creating the radio station table -->
+         <table>
+            <tr> <th>Radio Station</th> <th>Frequency</th> </tr>
+            <tr> <td>The Current</td> <td>89.3</td> </tr>
+            <tr> <td>KFAN</td> <td>100.3</td> </tr>
+         </table>
+
+        <!-- Blank line -->
+        <p></p>
+
+         <!-- Creating the fish table -->
+          <table>
+            <tr> <th>Fish</th> <th>Habitat</th> </tr>
+            <tr> <td>Trout</td> <td>River</td> </tr>
+            <tr> <td>Shark</td> <td>Ocean</td> </tr>
+            <tr> <td>Walleye</td> <td>Lake</td> </tr>
+          </table>
+
+          <script>
+
+            // Function to display the width of the window
+            function display_width(){
+                let width = document.body.scrollWidth
+                let width_display_element = document.querySelector('#width')
+                width_display_element.innerHTML = `Window Width = ${width} pixels`
+            }
+
+            // Call the function to display the initial width
+            display_width()
+
+            // Add an event listener for when the window is resized
+            window.addEventListener('resize', display_width)
+
+          </script>
+         
+</body>
+</html>
