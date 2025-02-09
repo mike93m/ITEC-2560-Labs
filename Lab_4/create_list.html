@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Create addEventListener</title>
+</head>
+
+<body>
+  <p>Please enter some text to add to the list</p>
+  <input type="text" id="text">
+  <button id="add-to-list">Add</button>
+  <button id="clear_list">Clear</button>
+
+  <ul id="list">
+
+  </ul>
+
+<script>
+    // Add text to list button
+    let addButton = document.querySelector('#add-to-list')
+    // Text input
+    let textInput = document.querySelector('#text')
+    // List
+    let list = document.querySelector('#list')
+    // Clear list button
+    let clearButton = document.querySelector('#clear_list')
+
+    // Number of items in list/maximum number of items
+    let items_in_list = 0
+    let max_items = 10
+
+    // Add text to list when enter key is pressed
+    document.addEventListener('keyup', function(event) {
+        if (event.keyCode === 13) {
+            addButton.click()
+        }
+    })
+
+    // Add text to list when add button is clicked
+    addButton.addEventListener('click', function() {
+
+        // Check if text input is empty
+        if (textInput.value == '') {
+            alert('Please enter some text')
+            return
+        }
+
+        // Check if the maximum number of items has been reached
+        if (items_in_list >= max_items) {
+            alert('You have reached the maximum number of items')
+            return
+        }
+
+        // Set variables
+        let text = textInput.value
+        let listItem = document.createElement('li')
+
+        // Make user input the text of the list item
+        listItem.innerHTML = text 
+
+        // Add the list item to the list
+        list.appendChild(listItem)
+
+        // Clear the text input
+        textInput.value = ''
+
+        // Increment the number of items in the list
+        items_in_list++
+    })
+
+    // Clear the list when clear button is clicked
+    clearButton.addEventListener('click', function() {
+        list.innerHTML = ''
+        items_in_list = 0
+    })
+
+</script>
+
+</body>
+
+</html>
+
+</script>
+
+</body>
+</html>
