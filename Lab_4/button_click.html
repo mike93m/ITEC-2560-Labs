@@ -10,22 +10,14 @@
 
 <script>
 
-    let correct_answer_button = document.querySelector('#correct_answer');
-
-    let button = document.querySelector('#alert_button');
-
-    let result = document.querySelector('#result');
-
-    correct_answer_button.addEventListener('click', function(){
-        result.innerHTML = 'Correct!';
-    });
+    let alert_button = document.querySelector('button')
 
     function show_alert(){
         alert('You clicked the button!')
-        button.innerHTML = 'You clicked me!';   
+        alert_button.innerHTML = 'You clicked me!'  
     }
 
-    button.addEventListener('click', show_alert);
+    alert_button.addEventListener('click', show_alert)
 
 </script>
     
