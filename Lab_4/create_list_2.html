@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create_list_2</title>
+</head>
+<body>
+    
+    <p>Type some text and hit the ENTER button to add it to a list. Use the CLEAR button to empty the list</p>
+
+    <!-- Text input/enter& clear buttons -->
+    <input type="text" id="text_input">
+    <button id="enter_button">ENTER</button>
+    <button id="clear_button">CLEAR</button>
+
+    <!-- Create list -->
+    <ul id="list"></ul>
+
+<script>
+
+    // Set variables for text input, enter button, and list
+    let text_input = document.querySelector('#text_input')
+
+    let enter_button = document.querySelector('#enter_button')
+
+    let clear_button = document.querySelector('#clear_button')
+
+    let list = document.querySelector('#list')
+
+    // Set variables for number of list items/maximum number of list items
+    let items_in_list = 0
+    let max_items = 10
+
+    // Add text to list when enter key is pressed
+    document.addEventListener('keyup', function(event){
+        if (event.keyCode === 13){
+            enter_button.click()
+        }
+    })
+
+    // Add text to list when enter button is clicked
+    enter_button.addEventListener('click', function(){
+        // Check if text input is empty
+        if (text_input.value == ''){
+            alert('Please enter some text')
+            return
+        }
+
+        // Check if the maximum number of items has been reached
+        if (items_in_list >= max_items){
+            alert('You have reached the maximum number of items')
+            return
+        }
+
+        // Create list item
+        let text = text_input.value
+        let list_item = document.createElement('li')
+        list_item.innerHTML = text
+
+        // Add list item to list
+        list.appendChild(list_item)
+
+        // Increment number of list items
+        items_in_list++
+
+        // Clear text input
+        text_input.value = ''
+    })
+
+    // Clear list when clear button is clicked and set numberof items in list to 0
+    clear_button.addEventListener('click', function(){
+        list.innerHTML = ''
+        items_in_list = 0
+    })
+
+</script>
+</body>
+</html>
