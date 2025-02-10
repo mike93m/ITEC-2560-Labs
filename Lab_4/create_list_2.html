@@ -32,7 +32,7 @@
 
     // Add text to list when enter key is pressed
     document.addEventListener('keyup', function(event){
-        if (event.keyCode === 13){
+        if (event.key === 'Enter'){
             enter_button.click()
         }
     })
@@ -40,8 +40,12 @@
     // Add text to list when enter button is clicked
     enter_button.addEventListener('click', function(){
         // Check if text input is empty
-        if (text_input.value == ''){
-            alert('Please enter some text')
+        if (text_input.value.length < 1){
+            return
+        }
+
+        if (text_input.value.length>50) {
+            alert('Please enter 50 characters or less')
             return
         }
 
