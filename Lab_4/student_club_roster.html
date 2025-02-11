@@ -54,7 +54,7 @@
 
 <script>
 
-
+    // Create variables for student info inputs, the list, and the add and remove buttons
     let student_count = document.querySelector('#student-count')
     student_count.innerHTML = 0
 
@@ -70,29 +70,34 @@
 
     let remove_selected_students = document.querySelector('#remove-selected-students')
 
+
+    // Event listener for the add student button, when the button is clicked a new student is added to the list
+    // Each input has validation to ensure that the user enters a value
     add_student_button.addEventListener('click', function(){
 
+        // Add student name
         let student_name = add_student.value
         if (student_name == ''){
             alert('Please enter a student name')
             return
         }
-
+        // Add student ID
         let student_id = add_id.value
         if (student_id == ''){
             alert('Please enter a student ID')
             return
         }
-
+        // Add student GPA
         let student_gpa = add_gpa.value
         if (student_gpa == '' || student_gpa < 1 || student_gpa > 4){
             alert('Please enter a valid GPA')
             return
         }
-
+        // Create a new list item for the student
         let new_student = document.createElement('li')
         new_student.innerHTML = `${student_name}, ID: ${student_id}, GPA: ${student_gpa}`
 
+        // Add a class to the list item that will allow it to be selected
         new_student.addEventListener('click', function(){
             if (new_student.classList.contains('selected')){
                 new_student.classList.remove('selected')
@@ -100,9 +105,9 @@
                 new_student.classList.add('selected')
             }
         })
-
+        // Add the new student to the list
         student_list.appendChild(new_student)
-
+        // Update the student count
         student_count.innerHTML = student_list.children.length
 
         // clear the values of the three input elements
@@ -112,6 +117,7 @@
 
     })
 
+    // Event listener for remove selected students button, when the button is clicked the selected students are removed from the list
     remove_selected_students.addEventListener('click', function() {
         // Get all the selected students
         let selected_students = document.querySelectorAll('.selected')
