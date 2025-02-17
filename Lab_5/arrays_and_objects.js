@@ -84,10 +84,6 @@ cats_and_owners.forEach(function(pair){
 Source http://api.nobelprize.org/v1/prize.json?year=2017
 * */
 
-// TODO print the full name of the Literature Nobel laureate.
-// TODO print the ids of each of the Physics Nobel laureates. Your code should still work without modification if a laureate was added, or removed.
-// TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
-// TODO write code to print the total number of prize categories
 // TODO write code to count the total number of laureates from 2017. 
 //   have a good look at how the JSON is structured, and think about what loop(s) you'll need to write.
 
@@ -216,3 +212,61 @@ let nobel_prize_winners_2017 = {
     }
   ]
 }
+
+// TODO print the full name of the Literature Nobel laureate.
+let prizes_array = nobel_prize_winners_2017.prizes
+console.log(prizes_array)
+
+let literature_category = ''
+prizes_array.forEach(function(prize){
+    if (prize.category === "literature"){
+        literature_category = prize
+    }    
+})
+
+console.log(literature_category)
+
+let laureates_array = literature_category.laureates
+console.log(laureates_array)
+
+let laureate_info = laureates_array[0]
+console.log(laureate_info)
+
+let first_name = laureate_info.firstname
+let last_name = laureate_info.surname
+
+console.log(`${first_name} ${last_name}`)
+
+// TODO print the ids of each of the Physics Nobel laureates. Your code should still work without modification if a laureate was added, or removed.
+let physics_category = ''
+prizes_array.forEach(function(prize){
+    if (prize.category === "physics"){
+        physics_category = prize
+    }
+})
+console.log(physics_category)
+
+let phy_laureates_array = physics_category.laureates
+console.log(phy_laureates_array)
+
+let id_array = []
+phy_laureates_array.forEach(function(laureate){
+    let id = laureate.id
+    id_array.push(id)
+})
+console.log(id_array)
+console.log(`The IDs of the winners of the physics category are as follows: ${id_array.join(', ')}`)
+
+// TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
+prizes_array.forEach(function(prize){
+    console.log(prize.category)
+})
+
+// TODO write code to print the total number of prize categories
+let categories_array = []
+prizes_array.forEach(function(prize){
+    categories_array.push(prize)
+})
+console.log(categories_array)
+console.log(categories_array.length)
+
