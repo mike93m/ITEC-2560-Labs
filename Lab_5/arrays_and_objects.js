@@ -84,7 +84,7 @@ cats_and_owners.forEach(function(pair){
 Source http://api.nobelprize.org/v1/prize.json?year=2017
 * */
 
-// TODO write code to count the total number of laureates from 2017. 
+
 //   have a good look at how the JSON is structured, and think about what loop(s) you'll need to write.
 
 
@@ -270,3 +270,10 @@ prizes_array.forEach(function(prize){
 console.log(categories_array)
 console.log(categories_array.length)
 
+// TODO write code to count the total number of laureates from 2017. 
+let total_laureates = 0
+prizes_array.forEach(function(prize){
+    total_laureates += prize.laureates.length
+})
+
+console.log(total_laureates)
