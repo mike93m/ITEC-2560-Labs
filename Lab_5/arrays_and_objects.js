@@ -263,12 +263,8 @@ prizes_array.forEach(function(prize){
 })
 
 // TODO write code to print the total number of prize categories
-let categories_array = []
-prizes_array.forEach(function(prize){
-    categories_array.push(prize)
-})
-console.log(categories_array)
-console.log(categories_array.length)
+console.log(prizes_array.length)
+
 
 // TODO write code to count the total number of laureates from 2017. 
 let total_laureates = 0
