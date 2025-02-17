@@ -56,7 +56,6 @@
 
     // Create variables for student info inputs, the list, and the add and remove buttons
     let student_count = document.querySelector('#student-count')
-    student_count.innerHTML = 0
 
     let add_student = document.querySelector('#student-name')
 
@@ -69,6 +68,8 @@
     let student_list = document.querySelector('#student-list')
 
     let remove_selected_students = document.querySelector('#remove-selected-students')
+    // Set the initial student count to 0
+    student_count.innerHTML = 0
 
 
     // Event listener for the add student button, when the button is clicked a new student is added to the list
