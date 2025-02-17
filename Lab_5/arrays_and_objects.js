@@ -25,9 +25,6 @@ let longitude = iss_location.iss_position.longitude
 console.log(`Longitude: ${longitude}`)
 
 
-
-
-
 /* b. Use this JavaScript object of exchange rates relative to Euros.
 The properties are currency symbols, the values are the exchange rates.
 Data source: http://fixer.io/
@@ -42,9 +39,15 @@ let rates = {
 }
 
 // TODO write code to add a new property for Swiss Francs. Symbol is CHF, value is 1.1787.
+rates["CHF"] = 1.1787
+console.log(rates)
 // TODO if you had 100 Euros, write code to get the exchange rate from the object, then calculate 
 //      the equivalent value in Australian Dollars (AUD)
+let euros = 100
+let AUD_exchange_rate = rates["AUD"]
+let amount_in_AUD = euros * AUD_exchange_rate
 
+console.log(`100 Euros is equivalent to ${amount_in_AUD.toFixed()} Australian Dollars`)
 
 
 /* c. Use this JavaScript array of objects of cat owners, and their cats. Source, moderncat.com
@@ -58,12 +61,24 @@ let cats_and_owners = [
 ]
 
 // TODO Taylor Swift's cat is called 'Meredith'. Write code to add this data to the array.
+cats_and_owners.push({name: "Taylor Swift", cat: "Meredith"})
+console.log(cats_and_owners)
+
 // TODO write a loop to print each cat owner, and their cat's name, one per line. Use the forEach style.
 //   Each line should have a message like "Snoop Dogg's cat is called Miles Davis"
+cats_and_owners.forEach(function(owner_cat_pair){
+    console.log(`${owner_cat_pair.name} owns a cat named ${owner_cat_pair.cat}`)
+})
+
 // TODO print Gary Oldman's cat's name by reading the data in the appropriate array index, using [] notation
+console.log(cats_and_owners[1].cat)
+
 // TODO print Gary Oldman's cat's name by looping over the array until you find the object with name = "Gary Oldman"
-
-
+cats_and_owners.forEach(function(pair){
+    if (pair.name == "Gary Oldman") {
+        console.log(pair.cat)
+    }
+})
 
 /* d. Use the following JSON object, describing the Nobel Prize winners in 2017.
 Source http://api.nobelprize.org/v1/prize.json?year=2017
