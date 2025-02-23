@@ -65,6 +65,7 @@
 
 <script>
 
+    // Create variables for the different input elements and for the order summary paragraph
     let homeownerNameInput = document.querySelector('#homeowner-name')
     let homeownerHouseNumberInput = document.querySelector('#homeowner-house-number')
     let homeownerStreetNameInput = document.querySelector('#homeowner-street-name')
@@ -115,8 +116,7 @@
             alert(errors.join('\n'))
         }
 
-        // TODO - If there are no errors, use a template string to display an order 
-        // summary in the order summary paragraph.
+        // If there are no errors, display the order summary using the template 
         orderSummaryParagraph.innerHTML =  `Order Summary:<br>
                                             Name: ${name}<br>
                                             House Number: ${houseNumber}<br>
