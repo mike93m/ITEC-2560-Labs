@@ -9,9 +9,11 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copywrite">OpenStreetMap</a>',    
 }).addTo(map)
 
+// Creat the canvas for the chart
 let chartCanvas = document.querySelector('#bridge-chart')
 let ctx = chartCanvas.getContext('2d')
 
+// Create the chart object leaving the data and options empty to be added later as the bridges are looped through
 let bridgeChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
@@ -89,7 +91,6 @@ bridgeData.forEach(function(bridge) {
     // Add the span to the chart
     bridgeChart.data.datasets[0].data.push(bridge.Span);
 
-    // Add a color to the chart
     // Keep track of the number of colors added to the chart
     let colorCount = bridgeChart.data.datasets[0].backgroundColor.length;
     // Get the color from the array of colors
@@ -121,6 +122,7 @@ bridgeData.forEach(function(bridge) {
     }
 });
 
+console.log(longestBridge);
+
 // Update the chart
 bridgeChart.update();
-console.log("The bridge with the longest span is:", longestBridge);
