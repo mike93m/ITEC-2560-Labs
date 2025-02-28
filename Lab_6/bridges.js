@@ -39,7 +39,7 @@ let bridgeData = [
     {
         "Bridge name": "Golden Gate Bridge",
         "City and State": "San Francisco and Marin, CA",
-        "Span": 1298.4,
+        "Span": 1280.2,
         "Location": [37.8199, -122.4783]
     },
     {
@@ -65,9 +65,8 @@ let bridgeData = [
 // Create an array of colors to add to the chart
 let chartColors = ['tomato', 'orange', 'dodgerblue', 'mediumseagreen', 'slateblue', 'violet']
 
-// Initialize the longest span and bridge name to the first bridge's span and name
+// Initialize the longest span to the first bridge's span 
 let longestSpan = bridgeData[0].Span;
-let longestBridge = bridgeData[0];
 
 // Loop through the array of bridge data to find the longest span
 bridgeData.forEach(function(bridge) {
@@ -99,7 +98,7 @@ bridgeData.forEach(function(bridge) {
     // Add the color to the chart
     bridgeChart.data.datasets[0].backgroundColor.push(color);
 
-    // Set the marker to the black icon
+    // Variable for the black icon
     let bridgeIcon = L.icon({
         iconUrl: 'bridge.png',
         iconSize: [28, 28],
@@ -107,22 +106,23 @@ bridgeData.forEach(function(bridge) {
         popupAnchor: [-2, -28]
     });
 
+    // Set the marker to the black icon
     bridgeMarker.setIcon(bridgeIcon);
 
-    // If the bridge is the longest span, set the marker to a red icon
-    // I had to add extra validation to make sure the bridge name is the same as the longest bridge
-    // because the spans are the same for the Verrazano-Narrows Bridge and Golden Gate Bridge
-    if (bridge.Span === longestSpan && bridge["Bridge name"] === longestBridge["Bridge name"]) {
-        bridgeMarker.setIcon(L.icon({
-            iconUrl: 'red-bridge.png',
-            iconSize: [28, 28],
-            iconAnchor: [16, 32],
-            popupAnchor: [0, -28]
-        }));
-    }
-});
+    // Variable for the red icon
+    let redIcon = L.icon({
+        iconUrl: 'red-bridge.png',
+        iconSize: [28, 28],
+        iconAnchor: [16, 32],
+        popupAnchor: [-2, -28]
+    });
 
-console.log(longestBridge);
+    // If the bridge is the longest span, set the marker to the red icon
+    if (bridge.Span === longestSpan) {
+        bridgeMarker.setIcon(redIcon);
+    }
+
+});
 
 // Update the chart
 bridgeChart.update();
