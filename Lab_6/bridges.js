@@ -28,7 +28,7 @@ let bridgeChart = new Chart(ctx, {
     options: {}
 })
 // Arry of objects with bridge data
-// Looking back I should have used camel case or a single word for the name of each key to make the template string easier to read
+// Looking back I should have used camel case or a single word for the name of each key to make thngs easier to read and to use dot notation
 let bridgeData = [
     {
         "Bridge name": "Verrazano-Narrows Bridge",
@@ -65,7 +65,7 @@ let bridgeData = [
 // Create an array of colors to add to the chart
 let chartColors = ['tomato', 'orange', 'dodgerblue', 'mediumseagreen', 'slateblue', 'violet']
 
-// Initialize the longest span to the first bridge's span
+// Initialize the longest span and bridge name to the first bridge's span and name
 let longestSpan = bridgeData[0].Span;
 let longestBridge = bridgeData[0];
 
@@ -104,7 +104,7 @@ bridgeData.forEach(function(bridge) {
         iconUrl: 'bridge.png',
         iconSize: [28, 28],
         iconAnchor: [16, 32],
-        popupAnchor: [0, -28]
+        popupAnchor: [-2, -28]
     });
 
     bridgeMarker.setIcon(bridgeIcon);
