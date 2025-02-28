@@ -9,7 +9,24 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copywrite">OpenStreetMap</a>',    
 }).addTo(map)
 
+let chartCanvas = document.querySelector('#bridge-chart')
+let ctx = chartCanvas.getContext('2d')
+
+let bridgeChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        datasets: [
+            {
+            data: [],
+            backgroundColor: []
+        }
+        ],
+        labels: []
+    },
+    options: {}
+})
 // Arry of objects with bridge data
+// Looking back I should have used camel case or a single word for the name of each key to make the template string easier to read
 let bridgeData = [
     {
         "Bridge name": "Verrazano-Narrows Bridge",
@@ -43,10 +60,67 @@ let bridgeData = [
     }
 ]
 
-// Loop through the array of bridge data
+// Create an array of colors to add to the chart
+let chartColors = ['tomato', 'orange', 'dodgerblue', 'mediumseagreen', 'slateblue', 'violet']
+
+// Initialize the longest span to the first bridge's span
+let longestSpan = bridgeData[0].Span;
+let longestBridge = bridgeData[0];
+
+// Loop through the array of bridge data to find the longest span
+bridgeData.forEach(function(bridge) {
+    if (bridge.Span > longestSpan) {
+        longestSpan = bridge.Span;
+        longestBridge = bridge;
+    }
+});
+
+// Loop through the array of bridge data to create markers and add the data to the chart
 bridgeData.forEach(function(bridge) {
     // Create a marker for each bridge
     let bridgeMarker = L.marker(bridge.Location)
+        // Add a popup to the marker
         .bindPopup(`${bridge["Bridge name"]}<br>${bridge["City and State"]}<br>Span: ${bridge.Span} meters`)
-        .addTo(map)
-})
+        .addTo(map);
+
+    // Add the bridge name to the chart
+    bridgeChart.data.labels.push(bridge["Bridge name"]);
+
+    // Add the span to the chart
+    bridgeChart.data.datasets[0].data.push(bridge.Span);
+
+    // Add a color to the chart
+    // Keep track of the number of colors added to the chart
+    let colorCount = bridgeChart.data.datasets[0].backgroundColor.length;
+    // Get the color from the array of colors
+    // The % operator is used to loop back to the beginning of the array once we reach the end(exceed the length of the array)
+    let color = chartColors[colorCount % chartColors.length];
+    // Add the color to the chart
+    bridgeChart.data.datasets[0].backgroundColor.push(color);
+
+    // Set the marker to the black icon
+    let bridgeIcon = L.icon({
+        iconUrl: 'bridge.png',
+        iconSize: [28, 28],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -28]
+    });
+
+    bridgeMarker.setIcon(bridgeIcon);
+
+    // If the bridge is the longest span, set the marker to a red icon
+    // I had to add extra validation to make sure the bridge name is the same as the longest bridge
+    // because the spans are the same for the Verrazano-Narrows Bridge and Golden Gate Bridge
+    if (bridge.Span === longestSpan && bridge["Bridge name"] === longestBridge["Bridge name"]) {
+        bridgeMarker.setIcon(L.icon({
+            iconUrl: 'red-bridge.png',
+            iconSize: [28, 28],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -28]
+        }));
+    }
+});
+
+// Update the chart
+bridgeChart.update();
+console.log("The bridge with the longest span is:", longestBridge);
