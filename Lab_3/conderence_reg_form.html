@@ -42,16 +42,16 @@
                     </div><br>
                     <!-- email input -->
                     <div><label class="form-label" for="attendee-email">email</label> 
-                        <input class="form-control" id="attendee-email" type="text" name="attendee-email" required>
+                        <input class="form-control" id="attendee-email" type="email" name="attendee-email" required>
                     </div><br>
                     <!-- T-shirt size option select -->
                     <div><label class="form-label" for="t-shirt-size">T-shirt size</label>
-                        <select name="t-shirt-size" class="form-select" required>
+                        <select name="t-shirt-size" id="t-shirt-size" class="form-select" required>
                             <option> Small </option>
                             <option> Medium </option>
                             <option> Large </option>
                             <option> X-Large </option>
-                        <select>
+                        </select>
                     </div><br>
                     <!-- Birthdate input -->
                     <div>
@@ -62,22 +62,22 @@
                     <div>
                         <label class="form-label" for="email-updates">Would you like to recieve email updates from our sponsors?</label>
                         <div class="form-check">
-                            <input class="form-check-input" id for="receieve-email-updates" name="email-updates" type="radio" checked required>
-                            <label class="form-check-label" for="receieve-email-updates">Yes send me updates</label>
+                            <input class="form-check-input" id for="email-updates" name="email-updates" type="radio">
+                            <label class="form-check-label" for="email-updates">Yes send me updates</label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" id for="no-email-updates" name="email-updates" type="radio">
-                            <label class="form-check-label" for="no-email-updates">No thanks</label>
+                            <label class="form-check-label" for="email-updates">No thanks</label>
                         </div><br>
                     </div>
                     <!-- Session choice checkboxes  -->
                     <div>
                         <label class="form-label" for="session-choice">Which session would you like to attend?</label>
                         <div class="form-check">
-                            <label class="form-check-label" for="morning-session">Morning session</label>
-                            <input class="form-check-input" id="morning-session" type="checkbox" name="session-choice" required>
+                            <label class="form-check-label" for="session-choice">Morning session</label>
+                            <input class="form-check-input" id="morning-session" type="checkbox" name="session-choice">
                             <br>
-                            <label class="form-check-label" for="afternoon-session">Afternoon session</label>
+                            <label class="form-check-label" for="session-choice">Afternoon session</label>
                             <input class="form-check-input" id="afternoon-session" type="checkbox" name="session-choice">  
                         </div>
                     </div><br>
