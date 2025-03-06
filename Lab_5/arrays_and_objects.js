@@ -282,3 +282,5 @@ prizes_array.forEach(function(prize){
 })
 
 console.log(total_laureates)
+
+type some stuff
