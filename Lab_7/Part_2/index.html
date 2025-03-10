@@ -9,9 +9,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
         crossorigin="anonymous">
-   
+
     <script src="countries.js"></script>
-    <script async defer src="game.js"></script>
+
+    <script defer src="game.js"></script>
+
+    <!-- Fast-Levenshtein script -->
+    <script src="https://unpkg.com/fast-levenshtein@2.0.6/levenshtein.js"></script>
 
 </head>
 
@@ -42,6 +46,7 @@
     <!-- TODO add a Play Again button to clear the user answer and result, 
      select a new random country, display the new random country for the user to guess the capital for -->
 
+    <!-- Clicking this button restarts the game(clears the inputs and gets a new country) -->
     <div class="mt-4">
         <button class="btn-default active" id="play-again">Play Again</button>
     </div>
