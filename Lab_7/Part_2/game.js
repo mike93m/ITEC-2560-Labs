@@ -1,4 +1,3 @@
-// TOOO finish these lines to select the correct elements in the HTML page.
 
 let randomCountryElement = document.querySelector('#random-country-display')     // The element to display the country's name in, currently has the text 'Country name placeholder'
 let userAnswerElement = document.querySelector('#user-answer-entry')    // The input element the user enters their answer in  
@@ -6,18 +5,18 @@ let submitButton = document.querySelector('#submit-user-answer')    // The butto
 let resultTextElement = document.querySelector('#game-result')   // The element that displays if the user is correct or not. Currently has the text "Replace with result"
 let playAgainButton = document.querySelector('#play-again')   // The button the user clicks to play again.
 
-// TODO finish the script to challenge the user about their knowledge of capital cities.
-// An array country names and two-letter country codes is provided in the countries.js file. 
-// Your browser treats all JavaScript files included with script elements as one big file,
-// organized in the order of the script tags. So the countriesAndCodes array from countries.js
-// is available to this script.
-
 console.log(countriesAndCodes)  // You don't need to log countriesAndCodes to solve this problem - just proving it is available 
 
-// Create a variable for the random country
-let randomCountry = countriesAndCodes[Math.floor(Math.random() * countriesAndCodes.length)]
-// Display the country's name in the randomCountryElement
-// Use .name to extract the name from the country object
+// Function to get a random country from the countriesAndCodes array
+function getRandomCountry() {
+    return countriesAndCodes[Math.floor(Math.random() * countriesAndCodes.length)]
+}
+
+// Create a variable to store the random country
+let randomCountry = getRandomCountry()
+console.log(randomCountry)
+
+// Get the name of the random country and display it in the randomCountryElement
 randomCountryElement.textContent = randomCountry.name 
 
 // TODO add a click event handler to the submitButton.  When the user clicks the button,
@@ -37,10 +36,14 @@ randomCountryElement.textContent = randomCountry.name
 //  * Display an appropriate message in the resultTextElement to tell the user if they are right or wrong. 
 //      For example 'Correct! The capital of Germany is Berlin' or 'Wrong - the capital of Germany is not G, it is Berlin'
 
-
+// Event listener for the submit button to handle the user's answer
 submitButton.addEventListener('click', () => {
+    // Get the user's answer
     let userAnswer = userAnswerElement.value
+    // Get the two-letter code for the random country
+    let randomCountry = getRandomCountry()
     let countryCode = randomCountry['twoLetterCode']
+    // Create the URL using the country code
     let url = `https://api.worldbank.org/v2/country/${countryCode}?format=json`
     console.log(url)
     fetch(url)
@@ -52,6 +55,7 @@ submitButton.addEventListener('click', () => {
         console.log(data[1]) 
         console.log(capitalCity)
         // Compare the user's answer to the capital city and display the result
+        // Use toLowerCase() to make the comparison case insensitive
         if (userAnswer.toLowerCase() === capitalCity.toLowerCase()) {
             resultTextElement.textContent = `Correct! The capital of ${randomCountry.name} is ${capitalCity}`
         } else {
@@ -70,16 +74,10 @@ userAnswerElement.addEventListener('keydown', (event) => {
     }
 })
 
+// When the play again button is clicked, select a new random country and clear the user and answer inputs
 playAgainButton.addEventListener('click', () => {
-    randomCountry = countriesAndCodes[Math.floor(Math.random() * countriesAndCodes.length)]
+    let randomCountry = getRandomCountry()
     randomCountryElement.textContent = randomCountry.name
     userAnswerElement.value = ''
     resultTextElement.textContent = ''
-})
-
-// TODO Create a Play Again button in the HTML. 
-// When the Play Again button is clicked, the user can try to guess a new country's capital. 
-// Clear the user's answer, select a new random country, 
-// display the country's name, handle the user's guess as described above. 
-// If you didn't use functions in the code you've already written, you should refactor your code 
-// to use function(s) to avoid writing very similar code again. 
+}) 
