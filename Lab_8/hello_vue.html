@@ -2,31 +2,68 @@
 <html lang="en">
 <head>
     <title>Hello Vue</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
    
 <body>
 
     <div id="app">
         <h1>Hello Vue</h1>
-        <p>
-            {{ message }}
-        </p>
+
+        <p>{{ message }}</p>
+
+        <p>{{ messageWithExclamations }}</p>
+
+        <button v-on:click="addExclamation">Add exclamation points</button>
+
+        <button v-on:click="resetMessage">Reset</button>
     </div>
 
     <script>
-
-        const { createApp, ref } = Vue
+        // Create a Vue app
+        const { createApp, ref, computed } = Vue
 
         createApp({
             setup() {
+                // Constant stores the message
+                const message = ref('Hello')
+                // Constant stores the number of exclamations
+                const numExclamations = ref(0)
+                // Function to add exclamations
+                function addExclamation() {
+                    if (numExclamations.value < 10) {
+                        numExclamations.value++
+                    } else {
+                        alert('You can only add 10 exclamations!')
+                    }
+                }
+                // Function to clear the message
+                function resetMessage() {
+                    numExclamations.value = 0
+                }
 
-            const message = ref('Hello!')
-                return { message }
+                const messageWithExclamations = computed(() => {
+                    // Create a variable to store the computed message
+                    let computedMessage = message.value
+                    // Add exclamations to the message
+                    for (let x = 0; x < numExclamations.value; x++) {
+                        computedMessage += '!'
+                    }
+                    return computedMessage
+                })
+
+                return { 
+                    message,
+                    numExclamations,
+                    messageWithExclamations,
+                    addExclamation,
+                    resetMessage
+                }
             }
-        }).mount('#app')
+        }).mount('#app') // Mount the app to the div with id "app"
 
     </script>
-    
+
 </body>
 </html>
