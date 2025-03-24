@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hello Vue Forms</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+
+<label>Please enter your name:</label>  
+<input v-model="name">
+
+<p v-if="name">Thanks your name is {{ name }}</p>
+<p v-else>Awaiting user input</p>
+
+<button v-on:click="clearName">Clear</button>
+</div>
+
+<script>
+
+    const{ createApp, ref } = Vue
+
+    createApp({
+        setup() {
+
+            const name = ref('')
+
+            function clearName() {
+                name.value = ''
+            }
+            return {
+                name,
+                clearName
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>
