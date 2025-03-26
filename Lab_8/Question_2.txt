@@ -1,6 +1,9 @@
 Lab_8 Question 2:
-When you get a vue error stating somthing was accessed during render 
-but is not defined on instance, it means that a piece of data that the program is trying to use was 
-created but is not properly coded in some way that is not allowing the webpage to access it. For example,
-a variable name could be misspelled somewhere or it might not have been added to the return statement. 
+When you get a vue error stating somthing was accessed during render but is not defined on instance, 
+it means that a piece of data that the program is trying to use was created but is not properly coded 
+in some way that is not allowing the webpage to access it. Can you ignore it? If the webpage is still 
+in development and you were only trying to test certain features that are not dependent on the undefined 
+element than yes you could ignore it but it must be corrected in order for the page to be fully functional. 
+Some of the ways this issue could be corrected are to ensure that all variables are spelled the same and 
+that they have all been included in the return statement of the Vue app setup code. 
 

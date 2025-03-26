@@ -10,12 +10,16 @@
 
 <div id="app">
 
+<!-- Name input -->
 <label>Please enter your name:</label>  
 <input v-model="name">
 
+<!-- If the user begins typing into the input display it -->
 <p v-if="name">Thanks your name is {{ name }}</p>
+<!-- Else display "Awaiting user input" -->
 <p v-else>Awaiting user input</p>
 
+<!-- Clear name button -->
 <button v-on:click="clearName">Clear</button>
 </div>
 
@@ -25,9 +29,10 @@
 
     createApp({
         setup() {
-
+            // Blank name variable to be filled by user
             const name = ref('')
 
+            // Function to clear the name
             function clearName() {
                 name.value = ''
             }

@@ -5,6 +5,7 @@
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
+    <!-- Table style -->
     <style>
         th, td {
             width: 25%;
@@ -19,8 +20,10 @@
 
 <div id="app">
 
+    <!-- Table setup -->
     <table>
         <tr>
+            <!-- Headers -->
             <th>Item</th>
             <th>Unit Price</th>
             <th>Quantity</th>
@@ -28,9 +31,12 @@
         </tr>
 
         <tr>
+            <!-- Data -->
+            <!-- name, unitPrice and total are the const's in the Vue app -->
             <td>{{ name }}</td>
             <td>{{ unitPrice }}</td>
-            <td><input type="number" v-model="quantity"></td>
+            <!-- User input for quantity -->
+            <td><input type="number" v-model="quantity"></td> 
             <td>{{ total }}</td>
         </tr>
     </table>
@@ -44,13 +50,15 @@
     createApp({
         setup() {
 
+            // Variables for the cart
             const name = ref('Hat')
             const quantity = ref(1)
             const unitPrice = ref(4.99)
 
+            // Function to calculate the total price
             const total = computed( function() {
                 const totalPrice = quantity.value * unitPrice.value
-                return totalPrice.toFixed(2)
+                return totalPrice.toFixed(2) // Rounds to 2 decimal places
             })
 
             return {

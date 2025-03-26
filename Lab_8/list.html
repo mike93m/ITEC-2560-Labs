@@ -13,12 +13,18 @@
     <h1>Task List</h1>
 
     <h2>Enter new task</h2>
+    <!-- Task input -->
     <label>Please enter your to-do task</label>
+    <!-- The user input is saved as newTask -->
     <br><input v-model="newTask"><br>
+    <!-- Add task button -->
+    <!-- When clicked, the addTask function excecutes -->
     <button v-on:click="addTask">Add Task</button>
 
+    <!-- Task list -->
     <h2>Task list</h2>
     <ul>
+    <!-- v-for loops through each item in the list and displays it -->
     <li v-for="task in taskList">{{ task }}</li>
     </ul>
 
@@ -31,9 +37,12 @@
     createApp({
         setup() {
 
+            // Task list
             const taskList = ref(['Water plants', 'Pay phone bill', 'Wash car'])
+            // Blank task variable to be filled by user
             const newTask = ref('')
 
+            // Function to add the task to the list IF the input is not blank
             function addTask() {
                 if (newTask.value) {
                 taskList.value.push(newTask.value)
