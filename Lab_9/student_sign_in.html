@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Sign In</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css" type="text/css">
+</head>
+
+<body>
+    <div id="app">
+        
+        <div id="new-student-form-errors" class="m-2">
+            <!-- TODO show errors from form validation -->
+        </div>
+
+
+        <div id="new-student-form" class="card add-student m-2 p-2">
+            <h4 class="card-title">Add new student</h4>
+
+            <div class="form-group mb-3">
+                <label for="name">Name</label>
+                <!-- TODO v-model newStudentName -->
+                <input id="name" class="form-control">
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="starID">Star ID</label>
+                 <!-- TODO v-model newStarID -->
+                <input id="starID" class="form-control">
+            </div>
+
+            <!-- TODO v-on:click event handler -->
+            <button class="btn btn-primary">Add</button>
+        </div>
+
+
+        <div id="student-list-table" class="card m-2 p-2">
+            <h4 class="card-title">Student List</h4>
+            <div id="student-table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>StarID</th>
+                            <th>Present?</th>
+                        </tr>
+                    </thead>
+
+                   <tbody>
+                        <!-- TODO create table rows 
+                        Each row will have a checkbox, bound to the app's data 
+                        When the checkbox is checked/unchecked, 
+                        the student will be signed in/out -->
+
+                   </tbody>
+
+                </table>
+            </div>
+        </div>
+
+        <div id="welcome-or-goodbye-message" class="m-2">
+            
+            <!-- TODO show a message when student arrives or leaves  -->
+            
+        </div>
+
+    </div>
+
+    <script>
+
+        // TODO Vue app 
+        const { createApp, ref } = Vue
+
+        createApp({
+            setup() {
+
+                const studentList = ref([
+                    { name: 'Alice', starID: '1234', present: false },
+                    { name: 'Bob', starID: '5678', present: false },
+                    { name: 'Charlie', starID: '9012', present: false }
+                ])
+
+               return {
+
+               } 
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
