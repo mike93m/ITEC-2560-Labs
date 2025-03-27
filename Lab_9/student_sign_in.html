@@ -23,17 +23,17 @@
             <div class="form-group mb-3">
                 <label for="name">Name</label>
                 <!-- TODO v-model newStudentName -->
-                <input id="name" class="form-control">
+                <input id="name" class="form-control" v-model="newStudentName">
             </div>
 
             <div class="form-group mb-3">
                 <label for="starID">Star ID</label>
                  <!-- TODO v-model newStarID -->
-                <input id="starID" class="form-control">
+                <input id="starID" class="form-control" v-model="newStarID">
             </div>
 
             <!-- TODO v-on:click event handler -->
-            <button class="btn btn-primary">Add</button>
+            <button class="btn btn-primary" v-on:click="addStudent">Add</button>
         </div>
 
 
@@ -46,6 +46,7 @@
                             <th>Name</th>
                             <th>StarID</th>
                             <th>Present?</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
 
@@ -54,7 +55,12 @@
                         Each row will have a checkbox, bound to the app's data 
                         When the checkbox is checked/unchecked, 
                         the student will be signed in/out -->
-
+                        <tr v-for="student in studentList">
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.starID }}</td>
+                            <td>
+                                <input type="checkbox" v-model="student.present">
+                            </td>
                    </tbody>
 
                 </table>
@@ -83,11 +89,27 @@
                     { name: 'Charlie', starID: '9012', present: false }
                 ])
 
-               return {
+                const newStudentName = ref('')
+                const newStarID = ref('')
 
-               } 
+                const addStudent = () => {
+                    let student = {
+                        name: newStudentName.value,
+                        starID: newStarID.value,
+                        present: false
+                    }
+                    studentList.value.push(student)
+                    newStudentName.value = ''
+                }
+
+                return {
+                    studentList,
+                    newStudentName,
+                    newStarID,
+                    addStudent
+                } 
             }
-        })
+        }).mount('#app')
 
     </script>
 
