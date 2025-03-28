@@ -11,9 +11,24 @@
 
 <body>
     <div id="app">
+
+        <div id="Welcome-or-goodbye-message" class="m-2">
+            <div v-if="mostRecentStudent.name">
+                <div v-if="mostRecentStudent.present" class="alert alert-success">
+                    Welcome, {{ mostRecentStudent.name }}!
+                </div>
+
+                <div v-else class="alert alert-info">
+                    Goodbye, {{ mostRecentStudent.name }}. See you later!
+            </div>
+        </div>
         
         <div id="new-student-form-errors" class="m-2">
-            <!-- TODO show errors from form validation -->
+            <div class="alert alert-danger" v-if="formErrors.length > 0">
+                <li v-for="error in formErrors" v-bind:key="error">
+                    {{ error }}
+                </li>
+            </div>
         </div>
 
 
@@ -22,17 +37,14 @@
 
             <div class="form-group mb-3">
                 <label for="name">Name</label>
-                <!-- TODO v-model newStudentName -->
-                <input id="name" class="form-control" v-model="newStudentName">
+                <input id="name" class="form-control" v-model.trim="newStudentName">
             </div>
 
             <div class="form-group mb-3">
                 <label for="starID">Star ID</label>
-                 <!-- TODO v-model newStarID -->
-                <input id="starID" class="form-control" v-model="newStarID">
+                <input id="starID" class="form-control" v-model.trim="newStarID">
             </div>
 
-            <!-- TODO v-on:click event handler -->
             <button class="btn btn-primary" v-on:click="addStudent">Add</button>
         </div>
 
@@ -59,8 +71,10 @@
                             <td>{{ student.name }}</td>
                             <td>{{ student.starID }}</td>
                             <td>
-                                <input type="checkbox" v-model="student.present">
-                            </td>
+                                <input type="checkbox" v-model="student.present" v-on:change="arrivedOrLeft(student)">
+                                <span class="mx-3" v-if="student.present">Here!</span>
+                                <span class="mx-3" v-else>Not here</span>   
+                            </td>  
                    </tbody>
 
                 </table>
@@ -92,20 +106,45 @@
                 const newStudentName = ref('')
                 const newStarID = ref('')
 
+                const mostRecentStudent = ref({})
+
+                const formErrors = ref([])
+
+                const arrivedOrLeft = (student) => {
+                    mostRecentStudent.value = student
+                }
+
                 const addStudent = () => {
-                    let student = {
+                    formErrors.value = []
+
+                    if (!newStudentName.value) {
+                        formErrors.value.push('Name is required')
+                    }
+                    if (!newStarID.value) {
+                        formErrors.value.push('Star ID is required')
+                    }
+
+
+                    if (formErrors.value.length === 0) {
+                        let student = {
                         name: newStudentName.value,
                         starID: newStarID.value,
                         present: false
+                        }
+                        studentList.value.push(student)
+                        newStudentName.value = ''
+                        newStarID.value = ''
                     }
-                    studentList.value.push(student)
-                    newStudentName.value = ''
+                    
                 }
 
                 return {
                     studentList,
                     newStudentName,
                     newStarID,
+                    formErrors,
+                    mostRecentStudent,
+                    arrivedOrLeft, 
                     addStudent
                 } 
             }
