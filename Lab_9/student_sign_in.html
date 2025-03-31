@@ -67,14 +67,19 @@
                         Each row will have a checkbox, bound to the app's data 
                         When the checkbox is checked/unchecked, 
                         the student will be signed in/out -->
-                        <tr v-for="student in studentList">
+                        <tr v-for="student in studentList" v-bind:key="student.starID" v-bind:class="{ present: student.present, absent: !student.present }">
                             <td>{{ student.name }}</td>
                             <td>{{ student.starID }}</td>
                             <td>
                                 <input type="checkbox" v-model="student.present" v-on:change="arrivedOrLeft(student)">
                                 <span class="mx-3" v-if="student.present">Here!</span>
-                                <span class="mx-3" v-else>Not here</span>   
+                                <span class="mx-3" v-else>Not present</span>   
                             </td>  
+                            <td>
+                                <button class="btn btn-danger" v-on:click="deleteStudent(student)">
+                                    <i class="bi bi-trash-fill"></i>Delete
+                                </button>
+                            </td>
                    </tbody>
 
                 </table>
@@ -138,6 +143,13 @@
                     
                 }
 
+                const deleteStudent = (studentToDelete) => {
+                    if (confirm(`Are you sure you want to delete ${studentToDelete.name}?`)) {
+                        studentList.value = studentList.value.filter((student) => {
+                        return studentToDelete != student
+                        })
+                    }
+                }
                 return {
                     studentList,
                     newStudentName,
@@ -145,7 +157,8 @@
                     formErrors,
                     mostRecentStudent,
                     arrivedOrLeft, 
-                    addStudent
+                    addStudent,
+                    deleteStudent
                 } 
             }
         }).mount('#app')
