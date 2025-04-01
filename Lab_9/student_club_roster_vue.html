@@ -32,32 +32,33 @@
 
     <label for="student-name">Student Name</label>
     <!-- Use v-model to connect this input to a ref called newStudentName -->
-    <input id="student-name" name="student-name">
+    <input id="student-name" name="student-name" v-model="newStudentName">
 
     <br>
 
     <label for="student-id">Student ID</label>
     <!-- Use v-model to connect this input to a ref called newStudentId -->
-    <input id="student-id" name="student-id">
+    <input id="student-id" name="student-id" v-model="newStudentId">
 
     <br>
 
     <label for="student-gpa">Student GPA</label>
     <!-- Use v-model to connect this input to a ref called newStudentGpa -->
-    <input id="student-gpa" name="student-gpa" type="number">
+    <input id="student-gpa" name="student-gpa" type="number" v-model="newStudentGpa" min="0" max="4">
 
     <br>
 
     <!-- Use v-on to call addNewStudent function. Complete the addNewStudent function in the script. -->
-    <button id="add-student">Add Student</button>    
+    <button id="add-student" @click="addNewStudent">Add Student</button>    
 
     <h2>Student List</h2>
 
-    <p>There is/are 
+    <p>
         <span id="student-count">
         <!-- Create a computed property called studentCount and use it to display the student count here -->
+        {{ studentCount }} {{ studentCountLabel }} enrolled in the club.
         </span> 
-    student(s) in the club.</p>
+    </p>
     
 
     <ul id="student-list">
@@ -65,12 +66,13 @@
         <li v-for="student in studentList" v-on:click="selectOrUnselectStudent(student)" v-bind:class="{ selected: student.selected }">
             <!-- Modify this to display the student's data more neatly - display their name, ID and GPA. -->
             <!-- for example "Beyonce Knowles, id: aa1234bb, GPA 3.8" -->
-            {{ student }}
+            {{ student.name }}, ID: {{ student.id }}, GPA: {{ student.gpa }}
         </li>
     </ul>
+    
 
     <!-- Add a v-on to call removeSelectedStudents -->
-    <button id="remove-selected-students">Remove selected students</button>
+    <button id="remove-selected-students" @click="removeSelectedStudents">Remove selected students</button>
 
 </div>  <!-- end of div#app -->
 
@@ -100,30 +102,73 @@
         setup() {
 
             // Create a new ref studentList. This will be an array. The array can be empty, or you can create an example student or students if you like. 
-            
+            const studentList = ref([
+                { name: 'Alice', id: '1234', gpa: 3.5, selected: false },
+                { name: 'Bob', id: '5678', gpa: 3.8, selected: false },
+                { name: 'Charlie', id: '9101', gpa: 2.9, selected: false }
+            ])
             // Create a new ref newStudentName, initially an empty string
+            newStudentName = ref('')
             // Create a new ref newStudentId, initially an empty string
+            newStudentId = ref('')
             // Create a new ref newStudentGpa, initially an empty string
-
+            newStudentGpa = ref('')
             // Use this for form validation 
             const errors = ref([])
 
             // Create a computed property studentCount. This will set the value to the length of the student list. 
+            const studentCount = computed(() => {
+                return studentList.value.length
+            })
+
+            // Create a computed property studentCountLabel. This will set the value to 'student' if the count is 1, and 'students' if the count is more than 1.
+            const studentCountLabel = computed(() => {
+                return studentCount.value === 1 ? 'student' : 'students'
+            })
 
             const addNewStudent = () => {
 
 
                 // Set the errors value to an empty array 
-
+                errors.value = []
                 // Read the value from newStudentName. If it is empty, add an error message to the end of the errors ref.
+                if (!newStudentName.value) {
+                    errors.value.push('Name is required')
+                }
                 // Read the value from newStudentId. If it is empty, add an error message to the end of the errors ref.
+                if (!newStudentId.value) {
+                    errors.value.push('ID is required')
+                }
                 // Read the value from newStudentGPA. If it is empty, add an error message to the end of the errors ref.
+                // If the string is empty
+                if (!newStudentGpa.value) {
+                    errors.value.push('GPA is required')
+                }
+                // If the string is not a number
+                if (isNaN(newStudentGpa.value)) {
+                    errors.value.push('GPA must be a number')
+                }
+                // If the number is not in the range between 0 and 4
+                if (newStudentGpa.value < 0 || newStudentGpa.value > 4) {
+                    errors.value.push('GPA must be between 0 and 4')
+                }
                 //  And, check that newStudentGPA is between 0 and 4. If not, add an error message to the end of the errors ref.
+                
                 
                 // Check the length of errors. If it is more than 0, show an alert with the error message(s)
                 if (errors.value.length > 0) {
                     alert(errors.value.join('\n'))
                 } else {
+                    newStudent = {
+                        name: newStudentName.value,
+                        id: newStudentId.value,
+                        gpa: newStudentGpa.value,
+                        selected: false
+                    }
+                    studentList.value.push(newStudent)
+                    newStudentName.value = ''
+                    newStudentId.value = ''
+                    newStudentGpa.value = ''
                     // Create a new student object with properties name, id, gpa, selected. 
                     // Set name to newStudentName's value
                     // Set id to newStudentId's value 
@@ -133,6 +178,7 @@
                     // Add this new object to the end of studentList 
 
                     // Set the value of newStudentName, newStudentId, newStudentGpa to empty strings, to clear the form 
+
                 }
             }
 
@@ -140,6 +186,8 @@
                 // Remove all students with selected = true from the studentList. You can do this with filter,
                 // or you can make a new empty array, loop over the studentList, and copy all selected = false students
                 // to the new list, then replace the value of studentList with the new array 
+                studentList.value = studentList.value.filter(student => !student.selected)
+
             }
 
 
@@ -152,6 +200,18 @@
 
             return {
                 // List all the refs and functions and computed properties 
+                studentList,
+                newStudentName,
+                newStudentId,
+                newStudentGpa,
+                errors,
+                studentCount,
+                studentCountLabel,
+                
+                addNewStudent,
+                selectOrUnselectStudent,
+                removeSelectedStudents,
+                
             }
         }
     }).mount('#app')
