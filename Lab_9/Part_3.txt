@@ -1,0 +1,11 @@
+After reviewing both the original vanilla JS student_club_roster and the new version, I am still unsure which I prefer.
+As far as ease of coding goes I would say that using plain JS is easier and in the case of the student_club_roster page 
+it was actually faster. My original file contains 138 lines of code while the Vue version has 199 lines. While I can see
+how certain aspects of Vue may seem easier at the end of the day if you have to write more code is it really? While I do 
+understand the point of creating the same page using 2 different methods, I feel that maybe there is a better type of webpage
+to show how Vue can be superior to plain JS because the student_club_roster example would definitely not be enough to sway 
+me into using Vue. I remember in one of the videos, Clara showed a good example of how plain JS can get a bit 
+messy when you have lots of nested code but for student_club_rostor that was not a factor and therfore it didnt help portray
+one method as being better than the other. One of the aspects I like about Vue is not having to create an event listener for
+things like button clicks, however, to reiterate my previous point, If it takes longer(more lines) to code than it doesnt really
+matter how many usefull features it has. Unless I was creating a complicated page with lots

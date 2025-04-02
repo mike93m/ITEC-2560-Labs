@@ -48,6 +48,7 @@
 
     <label for="student-gpa">Student GPA</label>
     <!-- GPA input -->
+    <!-- Has validation to ensure a number between 0 and 4 is entered -->
     <input id="student-gpa" name="student-gpa" type="number" v-model="newStudentGpa" min="0" max="4">
 
     <br>
@@ -109,14 +110,14 @@
                 return studentList.value.length
             })
 
-            // Computed property to use either student or students based on the number of students
+            // Computed property to use either 'student' or 'students' based on the count
             const studentCountLabel = computed(() => {
                 // If the studentCount is 1, return student otherwise return students
                 return studentCount.value === 1 ? 'student' : 'students'
             })
 
+            // Function to add a new student to the list
             const addNewStudent = () => {
-
 
                 // Set the errors value to an empty array 
                 errors.value = []
