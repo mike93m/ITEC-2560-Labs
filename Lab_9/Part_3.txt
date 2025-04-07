@@ -8,4 +8,5 @@ me into using Vue. I remember in one of the videos, Clara showed a good example 
 messy when you have lots of nested code but for student_club_rostor that was not a factor and therfore it didnt help portray
 one method as being better than the other. One of the aspects I like about Vue is not having to create an event listener for
 things like button clicks, however, to reiterate my previous point, If it takes longer(more lines) to code than it doesnt really
-matter how many usefull features it has. Unless I was creating a complicated page with lots
+matter how many usefull features it has. Unless I was creating a complicated page with lots of different parts I dont see the 
+benefit of using Vue.
