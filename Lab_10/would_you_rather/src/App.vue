@@ -13,7 +13,8 @@ function updateUserSelection(userAnswer) {
 </script>
 
 <template>
-  
+
+<div id="app">
   <h1>Would You Rather...</h1>
 
   <WouldYouRather 
@@ -26,9 +27,11 @@ function updateUserSelection(userAnswer) {
 
   <p>{{ userSelection }}</p>
 
-
+</div>
 </template>
 
 <style scoped>
-
+#app {
+ background-color: cornflowerblue;
+}
 </style>
