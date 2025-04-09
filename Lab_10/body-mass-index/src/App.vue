@@ -4,7 +4,7 @@ import { ref } from 'vue'
 
 const bmi = ref(0)
 
-function calculateBMI([weight, height]) {
+function calculateBMI([height, weight]) {
         bmi.value = (weight / (height * height)).toFixed(2)
 }
 
@@ -16,7 +16,10 @@ function calculateBMI([weight, height]) {
 
     <BodyMassIndex @stats-entered="calculateBMI"></BodyMassIndex>
 
-    <p>{{ bmi }}</p>
+    <div id="result">
+        <p><b>Your BMI is: {{ bmi }}</b></p>
+        
+    </div>
   
 </template>
 
