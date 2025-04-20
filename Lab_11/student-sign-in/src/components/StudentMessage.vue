@@ -1,6 +1,11 @@
 <script setup>
     // Script here 
-    
+import { useStudentStore } from '../stores/StudentStore'
+import { storeToRefs } from 'pinia'
+
+const studentStore = useStudentStore()
+
+const { mostRecentStudent } = storeToRefs(studentStore)
     
 </script>
     
@@ -9,14 +14,14 @@
     <div id="welcome-or-goodbye-message" class="m-2">
         <div v-if="mostRecentStudent.name">
 
-            <div v-if="mostRecentStudent.present"> class="alert alert-success">
+            <div v-if="mostRecentStudent.present" class="alert alert-success">
                 Welcome, {{ mostRecentStudent.name }}!
             </div>
 
             <div v-else class="alert alert-info">
                 Goodbye, {{ mostRecentStudent.name }}!
             </div>
-            
+
         </div>
     </div>
 </template>

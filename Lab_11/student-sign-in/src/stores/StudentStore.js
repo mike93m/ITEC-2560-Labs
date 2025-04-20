@@ -23,11 +23,29 @@ export const useStudentStore = defineStore('student', () => {
         })
     }
 
+    function arrivedOrLeft(student) {
+        mostRecentStudent.value = student
+    }
+
+    const studentCount = computed( () => {
+        return studentList.value.length
+    })
+
+    const studentListSorted = computed( () => {
+        return studentList.value.toSorted((s1, s2) => {
+            return s1.name.localeCompare(s2.name)
+        })
+    })
+    
+
     return {
         studentList,
         mostRecentStudent,
         addNewStudent,
-        deleteStudent
+        deleteStudent,
+        arrivedOrLeft,
+        studentCount,
+        studentListSorted
     }
 
 })
