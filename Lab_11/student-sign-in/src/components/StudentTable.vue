@@ -19,7 +19,7 @@ const deleteStudent = (student) => {
 
 
 const arrivedOrLeft = (student, isStudentPresent) => {
-    studentStore.present = isStudentPresent
+    student.present = isStudentPresent
     studentStore.arrivedOrLeft(student)
 }
 
@@ -57,7 +57,7 @@ const pluralStudentMessage = computed(() => {
                         <StudentRow 
                             v-for="student in studentListSorted"
                             v-bind:student="student"
-                            v-on:arrivedOrLeft="arrivedOrLeft">
+                            v-on:arrived-or-left="arrivedOrLeft">
                         </StudentRow>
 
                    </tbody>

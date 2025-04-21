@@ -9,10 +9,10 @@ const props = defineProps({
 const isStudentPresent = ref(props.student.present)
 
 
-const emit = defineEmits(['arrivedOrLeft', 'delete-student'])
+const emit = defineEmits(['arrived-or-left', 'delete-student'])
 
 const notiftyArrivedOrLeft = () => {
-    emit('arrivedOrLeft', props.student, isStudentPresent.value)
+    emit('arrived-or-left', props.student, isStudentPresent.value)
 }
 
 
