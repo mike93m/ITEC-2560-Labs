@@ -1,0 +1,14 @@
+<h2>Enter your height and weight</h2>
+
+    <div id="inputs">
+        <!-- Height and weight inputs -->
+        <!-- v-model stores the inputed data in the weight and height consts -->
+        <p><input type ="number" id="heightInput" value="height"><label for="heightInput">Height in meters</label></p>
+    
+        <p><input type ="number" id="weightInput" value="weight"><label for="weightInput">Weight in kilograms</label></p>
+
+    </div>
+    <!-- Button to calculate BMI -->
+    <!-- When clicked, it emits the stats-entered event with the height and weight values -->
+    <button id="calculateButton" >Calculate</button>
+  
