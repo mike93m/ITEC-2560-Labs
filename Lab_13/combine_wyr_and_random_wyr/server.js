@@ -1,6 +1,8 @@
 // Use express
 const express = require('express')
 
+const path = require('path')
+
 // Import the routes from index.js
 const routes = require('./routes/index')
 

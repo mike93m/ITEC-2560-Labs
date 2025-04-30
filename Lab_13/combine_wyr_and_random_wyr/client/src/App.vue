@@ -33,7 +33,7 @@ function updateUserSelection(userAnswer) {
 <template>
 
 <div id="app">
-  <h1>Would You Rather...</h1>
+  <h1>Hello! Would You Rather...</h1>
 
   <!-- WouldYouRather component -->
   <!-- Pass the question and answers as props to the child component -->
