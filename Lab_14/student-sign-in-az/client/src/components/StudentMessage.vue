@@ -3,14 +3,17 @@
 import { useStudentStore } from '../stores/StudentStore'
 import { storeToRefs } from 'pinia'
 
+// Import the StudentStore
 const studentStore = useStudentStore()
 
+// Use the storeToRefs function to create reactive references to the store's state
 const { mostRecentStudent } = storeToRefs(studentStore)
     
 </script>
     
 <template>
     <!-- HTML here -->
+    <!-- Welcome/goodbye message for the most recent student -->
     <div id="welcome-or-goodbye-message" class="m-2">
         <div v-if="mostRecentStudent.name">
 

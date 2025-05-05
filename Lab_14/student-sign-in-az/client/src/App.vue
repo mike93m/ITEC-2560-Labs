@@ -1,5 +1,6 @@
 <script setup>
 
+// Import the different components
 import NewStudentForm from './components/NewStudentForm.vue'
 import StudentTable from './components/StudentTable.vue'
 import StudentMessage from './components/StudentMessage.vue'
@@ -10,6 +11,7 @@ import StudentMessage from './components/StudentMessage.vue'
 <template>
   <!-- HTML here -->
 
+  <!-- Components -->
   <NewStudentForm></NewStudentForm>
   <StudentTable></StudentTable>
   <StudentMessage></StudentMessage>
