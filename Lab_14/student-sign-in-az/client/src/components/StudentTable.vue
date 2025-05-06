@@ -13,7 +13,7 @@ import StudentRow from './StudentRow.vue';
 const studentStore = useStudentStore()
 
 // Use the storeToRefs function to create reactive references to the store's state
-const {studentListSorted, studentCount }= storeToRefs(studentStore)
+const {sortedStudents, studentCount }= storeToRefs(studentStore)
 
 const deleteStudent = (student) => {
     studentStore.deleteStudent(student)
@@ -63,7 +63,7 @@ const pluralStudentMessage = computed(() => {
                         <!-- The arrivedOrLeft and deleteStudent functions are passed to the component -->
                         <!-- The v-for directive is used to loop through the studentListSorted array and create a new StudentRow component for each student -->
                         <StudentRow 
-                            v-for="student in studentListSorted"
+                            v-for="student in sortedStudents"
                             v-bind:student="student"
                             v-on:arrived-or-left="arrivedOrLeft"
                             v-on:delete-student="deleteStudent">
