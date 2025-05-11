@@ -16,6 +16,8 @@ export const useStudentStore = defineStore('students', () => {
     // Create a reactive variable 'mostRecentStudent' to hold the most recent student
     const mostRecentStudent = ref({})
 
+    const addNewStudentErrors = ref([])
+
     // Get all students from the API when the store is created
     function getAllStudents() {
         studentApi.get().then( students => {
@@ -28,17 +30,27 @@ export const useStudentStore = defineStore('students', () => {
     function addNewStudent(student) {
         studentApi.post(student).then( () => {
             getAllStudents()
+        }).catch( err => {
+            addNewStudentErrors.value = err.body
         })
     }
 
     // Delete a student from the list
     function deleteStudent(studentToDelete) {
         // TODO: Delete the student from the database
+        const deleteStudentAPI = mande(`/api/students/${studentToDelete.id}`)
+        deleteStudentAPI.delete().then( () => {
+            getAllStudents()
+        })
     }
 
     // Update the most recent student to the one that arrived or left
     function arrivedOrLeft(student) {
         // TODO
+        const editStudentAPI = mande(`api/students/${student.id}`)
+        editStudentAPI.patch(student).then( () => {
+            getAllStudents()
+        })
     }
 
     // Create a computed property to get the count of students in the list
@@ -53,6 +65,7 @@ export const useStudentStore = defineStore('students', () => {
     return {
         sortedStudents,
         mostRecentStudent,
+        addNewStudentErrors,
 
         getAllStudents,
         addNewStudent,

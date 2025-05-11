@@ -4,12 +4,18 @@ module.exports = (sequelize, DataTypes) => {
     const student = sequelize.define('Student', {
         name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
         },
         starID: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
+            unique: true,
+            validate: {
+                notEmpty: true
+            }
         },
         present: {
             type: DataTypes.BOOLEAN,
@@ -20,6 +26,6 @@ module.exports = (sequelize, DataTypes) => {
     student.sync({force: false}).then( () => {
         console.log('Synced student table')
     })
-    
+
     return student
 }

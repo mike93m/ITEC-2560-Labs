@@ -1,10 +1,11 @@
 <script setup>
 // Script here 
 
-import { ref } from 'vue'
+import { ref,watch } from 'vue'
 
 // Import the student store
 import { useStudentStore } from '../stores/StudentStore'
+import { storeToRefs } from 'pinia'
 // Use the student store
 const studentStore = useStudentStore()
 
@@ -15,6 +16,14 @@ const newStarID = ref('')
 const mostRecentStudent = ref({})
 
 const formErrors = ref([])
+
+const { addNewStudentErrors } = storeToRefs(studentStore)
+
+watch( addNewStudentErrors, () => {
+    if (addNewStudentErrors.value) {
+        alert(addNewStudentErrors.value.join('\n'))
+    }
+})
 
 const arrivedOrLeft = (student) => {
     mostRecentStudent.value = student
