@@ -1,12 +1,17 @@
 // Import the express module
 const express = require('express')
 const apiRoutes = require('./routes/api.js')
+const path = require('path')
 
 // Create an express application
 const app = express()
 
 // Use the express.json() middleware to parse JSON request bodies
 app.use(express.json()) 
+
+const staticFilePath = path.join(__dirname, 'client', 'dist')
+const staticFiles = express.static(staticFilePath)
+app.use('/', staticFiles) // Serve static files from the client/dist directory
 
 // Use api routes for all requests to /api
 app.use('/api', apiRoutes)

@@ -31,6 +31,7 @@ const questions = [
     }
 ]
 
+// Function to get a random Would You Rather question
 function randomWyrQuestion() {
     const randomIndex = Math.floor(Math.random() * questions.length)
     const randomQuestion = questions[randomIndex]
