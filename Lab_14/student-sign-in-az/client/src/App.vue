@@ -18,7 +18,7 @@ onMounted( () => {
   
 <template>
   <!-- HTML here -->
-
+  <h1 id="header">Student Sign In</h1>
   <!-- Components -->
   <NewStudentForm></NewStudentForm>
   <StudentTable></StudentTable>
@@ -28,4 +28,8 @@ onMounted( () => {
   
 <style scoped>
   /*  */
+  #header {
+    text-align: center;
+    color: #006bd6;
+  }
 </style>
