@@ -26,6 +26,7 @@ export const useStudentStore = defineStore('students', () => {
         })
     }
 
+
     // Add a new student to the list
     function addNewStudent(student) {
         studentApi.post(student).then( () => {
@@ -49,6 +50,7 @@ export const useStudentStore = defineStore('students', () => {
         // TODO
         const editStudentAPI = mande(`api/students/${student.id}`)
         editStudentAPI.patch(student).then( () => {
+            mostRecentStudent.value = student
             getAllStudents()
         })
     }
