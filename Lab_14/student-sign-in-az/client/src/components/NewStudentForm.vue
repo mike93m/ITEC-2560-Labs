@@ -17,14 +17,17 @@ const mostRecentStudent = ref({})
 
 const formErrors = ref([])
 
+// Object for the errors
 const { addNewStudentErrors } = storeToRefs(studentStore)
 
+// Watch for changes to the addNewStudentErrors and display them
 watch( addNewStudentErrors, () => {
     if (addNewStudentErrors.value) {
         alert(addNewStudentErrors.value.join('\n'))
     }
 })
 
+// Watch for changes to the mostRecentStudent and update the mostRecentStudent ref
 const arrivedOrLeft = (student) => {
     mostRecentStudent.value = student
 }

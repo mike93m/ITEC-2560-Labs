@@ -6,6 +6,7 @@ import NewStudentForm from './components/NewStudentForm.vue'
 import StudentTable from './components/StudentTable.vue'
 import StudentMessage from './components/StudentMessage.vue'
 
+// Import the StudentStore
 import {useStudentStore} from './stores/StudentStore'
 const studentStore = useStudentStore()
 
@@ -17,7 +18,7 @@ onMounted( () => {
 </script>
   
 <template>
-  <!-- HTML here -->
+  
   <h1 id="header">Student Sign In</h1>
   <!-- Components -->
   <NewStudentForm></NewStudentForm>
@@ -27,7 +28,7 @@ onMounted( () => {
 </template>
   
 <style scoped>
-  /*  */
+  /*Header style  */
   #header {
     text-align: center;
     color: #006bd6;

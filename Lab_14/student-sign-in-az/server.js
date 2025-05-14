@@ -9,17 +9,22 @@ const app = express()
 // Use the express.json() middleware to parse JSON request bodies
 app.use(express.json()) 
 
+// Get the path to the client/dist directory
 const staticFilePath = path.join(__dirname, 'client', 'dist')
+// Create a const for the static files using the path
 const staticFiles = express.static(staticFilePath)
-app.use('/', staticFiles) // Serve static files from the client/dist directory
+// Use the static files
+app.use('/', staticFiles) 
 
 // Use api routes for all requests to /api
 app.use('/api', apiRoutes)
 
+// Display not found error for 404 errors
 app.use(function(req,res,next) {
     res.status(404).send('Not found')
 })
 
+// Display server error for 500 errors
 app.use(function(req, res, next, err) {
     console.error(err.stack) // Log the error stack to the console for server-side debugging
     res.status(500).send('Server error') // Send a 500 error response to the client

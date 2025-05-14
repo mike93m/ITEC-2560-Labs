@@ -16,7 +16,7 @@ const { mostRecentStudent } = storeToRefs(studentStore)
     <!-- Welcome/goodbye message for the most recent student -->
     <div id="welcome-or-goodbye-message" class="m-2">
         <div v-if="mostRecentStudent.name">
-
+            <!-- If the most recent student is present or not -->
             <div v-if="mostRecentStudent.present" class="alert alert-success">
                 Welcome, {{ mostRecentStudent.name }}!
             </div>
