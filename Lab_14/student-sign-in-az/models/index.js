@@ -1,4 +1,4 @@
-// Required the database connection, the model and the config
+// Require the database connection, the model and the config
 const { Sequelize, DataTypes } = require('sequelize')
 const configJson = require('../config.json')
 const createStudentModel = require('./student')
